@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-produto
+spec:
+  selector:
+    matchLabels:
+      app: api-produto
+  template:
+    metadata:
+      labels:
+        app: api-produto
+    spec:
+      containers:
+      - name: api-produto
+        image: thiagosdantas/api-produto:v1
+        ports:
+        - containerPort: 8080
+        env:
+          - name: MONGODB_URI
+            value: mongodb://mongousr:mongopwd@mongodb-service:27017/admin
